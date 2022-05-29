@@ -8,7 +8,6 @@ const Calendar = () => {
       <Controls />
       <Grid />
     </div>
-    // </div>
   );
 };
 
