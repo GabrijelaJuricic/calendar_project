@@ -1,11 +1,11 @@
 import { getYear, addMonths } from "date-fns";
 import { useRecoilState } from "recoil";
-import { currentlySelectedMonth } from "../atoms";
+import { currentlySelectedMonthState } from "../atoms";
 import "./Controls.css";
 
 const Controls = () => {
   const [selectedMonth, setSelectedMonth] = useRecoilState(
-    currentlySelectedMonth
+    currentlySelectedMonthState
   );
 
   const incrementMonth = () => {

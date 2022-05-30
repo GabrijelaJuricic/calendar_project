@@ -1,6 +1,20 @@
-import { useRecoilValue } from "recoil";
-import { currentlySelectedMonth } from "../atoms";
-import { getDay, getDaysInMonth, startOfMonth } from "date-fns";
+import { useEffect } from "react";
+import { useRecoilValue, useRecoilState } from "recoil";
+import {
+  currentlySelectedMonthState,
+  allFetchedEventsState,
+  eventsInCurrentMonthState,
+} from "../atoms";
+import {
+  getDate,
+  getDay,
+  getDaysInMonth,
+  isSameMonth,
+  parseISO,
+  startOfMonth,
+} from "date-fns";
+import { Octokit } from "@octokit/core";
+import EventCard from "./EventCard";
 import "./Grid.css";
 
 var weekdays = [
@@ -14,10 +28,16 @@ var weekdays = [
 ];
 
 const Grid = () => {
-  const currentMonth = useRecoilValue(currentlySelectedMonth);
+  const [allFetchedEvents, setAllFetchedEvents] = useRecoilState(
+    allFetchedEventsState
+  );
+  const [eventsInCurrentMonth, setEventsInCurrentMonth] = useRecoilState(
+    eventsInCurrentMonthState
+  );
+  const currentlySelectedMonth = useRecoilValue(currentlySelectedMonthState);
 
-  var daysInCurrentMonth = getDaysInMonth(currentMonth);
-  var firstDayOfTheMonth = getDay(startOfMonth(currentMonth));
+  var daysInCurrentMonth = getDaysInMonth(currentlySelectedMonth);
+  var firstDayOfTheMonth = getDay(startOfMonth(currentlySelectedMonth));
   var sequence = [...Array(43).keys()].slice(1);
 
   // Change Sunday from 0 to 7 for easier calculation
@@ -31,12 +51,54 @@ const Grid = () => {
   }
 
   // Does a cell need to be filled with a date
-  const cellFilled = (cellId) => {
+  const cellHasADate = (cellId) => {
     return (
       (cellId >= firstDayOfTheMonth) &
       (cellId - firstDayOfTheMonth + 1 <= daysInCurrentMonth)
     );
   };
+
+  // Which date is in a cell
+  const dateInCell = (cellId) => {
+    return cellId - firstDayOfTheMonth + 1;
+  };
+
+  // Does a cell have an event
+  const cellHasAnEvent = (cellId) => {
+    var commitsOnThisDay = eventsInCurrentMonth.filter((commitItem) => {
+      return (
+        getDate(parseISO(commitItem.commit.author.date)) == dateInCell(cellId)
+      );
+    });
+    if (commitsOnThisDay) {
+      return commitsOnThisDay[0];
+    } else {
+      return [];
+    }
+  };
+
+  // Fetching events
+  useEffect(() => {
+    const octokit = new Octokit({
+      auth: "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",
+    });
+    octokit
+      .request("GET /repos/GabrijelaJuricic/calendar_project/commits")
+      .then((res) => {
+        setAllFetchedEvents(res.data);
+      });
+  }, []);
+
+  useEffect(() => {
+    setEventsInCurrentMonth(
+      allFetchedEvents.filter((commitItem) =>
+        isSameMonth(
+          parseISO(commitItem.commit.author.date),
+          currentlySelectedMonth
+        )
+      )
+    );
+  }, [allFetchedEvents, currentlySelectedMonth]);
 
   return (
     <div className="calendar">
@@ -47,10 +109,13 @@ const Grid = () => {
           </span>
         );
       })}
-      {sequence.map((i) => {
+      {sequence.map((cellId) => {
         return (
-          <div className="day" id={i} key={i}>
-            {cellFilled(i) ? i - firstDayOfTheMonth + 1 : ""}
+          <div className="cell" id={cellId} key={cellId}>
+            <div className="date">
+              {cellHasADate(cellId) ? dateInCell(cellId) : ""}
+            </div>
+            {cellHasAnEvent(cellId) && <EventCard />}
           </div>
         );
       })}

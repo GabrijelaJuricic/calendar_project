@@ -21,7 +21,7 @@
   grid-row: 2;
 }
 
-.day {
+.cell {
   border-bottom: 1px solid rgba(166, 168, 179, 0.12);
   border-right: 1px solid rgba(166, 168, 179, 0.12);
   text-align: right;
@@ -33,4 +33,10 @@
   position: relative;
   pointer-events: none;
   z-index: 1;
+  flex-flow: flex column;
+  align-items: flex-end;
+}
+
+.date {
+  height: 20%;
 }
