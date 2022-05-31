@@ -80,7 +80,7 @@ const Grid = () => {
   // Fetching events
   useEffect(() => {
     const octokit = new Octokit({
-      auth: "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",
+      auth: "Personal Access Token",
     });
     octokit
       .request("GET /repos/GabrijelaJuricic/calendar_project/commits")

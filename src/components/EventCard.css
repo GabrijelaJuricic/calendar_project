@@ -3,11 +3,12 @@
   color: #0d2818;
   border: 0;
   border-radius: 4px;
-  box-shadow: 0 7px 10px rgba(202, 193, 99, 0.15);
+  box-shadow: 0 7px 10px #0d28181a;
   max-width: 130px;
   font-size: 13px;
   padding: 5px;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  text-align: start;
 }
