@@ -15,13 +15,20 @@ const EventCard = (props) => {
   };
 
   const open = Boolean(anchorEl);
-  const id = open ? "simple-popover" : undefined;
 
   return (
     <div className="box">
-      <button onClick={handleClick}>{props.commitJson.commit.message}</button>
+      <button
+        aria-owns={open ? "mouse-over-popover" : undefined}
+        aria-haspopup="true"
+        onMouseEnter={handleClick}
+        onMouseLeave={handleClose}
+      >
+        {props.commitJson.commit.message}
+      </button>
       <Popover
-        id={id}
+        id={"mouse-over-popover"}
+        sx={{ pointerEvents: "none" }}
         open={open}
         anchorEl={anchorEl}
         onClose={handleClose}
@@ -29,6 +36,7 @@ const EventCard = (props) => {
           vertical: "bottom",
           horizontal: "left",
         }}
+        transformOrigin={{ vertical: "top", horizontal: "left" }}
       >
         <Typography sx={{ p: 1 }}>{props.commitJson.commit.message}</Typography>
       </Popover>
