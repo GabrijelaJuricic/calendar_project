@@ -1,6 +1,6 @@
 import "./EventCard.css";
 
-const EventCard = () => {
-  return <div className="boxbox"></div>;
+const EventCard = (props) => {
+  return <div className="box">{props.commitJson.commit.message}</div>;
 };
 export default EventCard;

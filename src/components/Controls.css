@@ -2,16 +2,14 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-left: 10px;
-  margin-top: 16px;
-  margin-bottom: 8px;
-  padding-right: 6px;
+  margin: 15px;
   min-height: 30px;
+  color: #00916e;
 }
 .month-display {
   display: flex;
   align-items: center;
-  font-weight: 500;
+  font-weight: bold;
   font-size: 1rem;
   line-height: 1.5;
 }
@@ -30,7 +28,7 @@
   display: inline-flex;
   align-items: center;
   background-color: transparent;
-  border: 0.5px solid darkcyan;
+  border: 0.5px solid #00916e;
   border-radius: 30%;
   margin: 0px -3px 0px 0px;
   cursor: pointer;

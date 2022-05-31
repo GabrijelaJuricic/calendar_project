@@ -80,7 +80,7 @@ const Grid = () => {
   // Fetching events
   useEffect(() => {
     const octokit = new Octokit({
-      auth: "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",
+      auth: "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",
     });
     octokit
       .request("GET /repos/GabrijelaJuricic/calendar_project/commits")
@@ -115,7 +115,9 @@ const Grid = () => {
             <div className="date">
               {cellHasADate(cellId) ? dateInCell(cellId) : ""}
             </div>
-            {cellHasAnEvent(cellId) && <EventCard />}
+            {cellHasAnEvent(cellId) && (
+              <EventCard commitJson={cellHasAnEvent(cellId)} />
+            )}
           </div>
         );
       })}
