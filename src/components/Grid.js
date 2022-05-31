@@ -54,7 +54,7 @@ const Grid = () => {
   const cellHasADate = (cellId) => {
     return (
       (cellId >= firstDayOfTheMonth) &
-      (cellId - firstDayOfTheMonth + 1 <= daysInCurrentMonth)
+      (cellId < daysInCurrentMonth + firstDayOfTheMonth)
     );
   };
 

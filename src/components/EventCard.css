@@ -1,14 +1,10 @@
 .box {
   background-color: #4747471e;
   color: #0d2818;
-  border: 0;
   border-radius: 4px;
-  box-shadow: 0 7px 10px #0d28181a;
-  max-width: 130px;
+  box-shadow: 0 2px 4px #00916e8c;
+  max-width: 121px;
   font-size: 13px;
   padding: 5px;
   white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  text-align: start;
 }

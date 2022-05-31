@@ -1,10 +1,21 @@
 .calendar-container {
   font-family: "Libre Baskerville";
-  width: 90%;
+  width: 1050px;
   margin: auto;
   overflow: hidden;
   box-shadow: 0 2px 20px rgba(0, 0, 0, 5%);
+  border: 1px solid rgba(166, 168, 179, 0.12);
   border-radius: 10px;
   background: #efecca1e;
-  max-width: 1200px;
+}
+
+button {
+  font-family: "Libre Baskerville";
+  font-size: small;
+  border: none;
+  background-color: initial;
+  max-width: inherit;
+  text-overflow: ellipsis;
+  white-space: pre;
+  overflow: auto;
 }
