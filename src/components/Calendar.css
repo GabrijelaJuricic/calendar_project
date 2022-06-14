@@ -17,5 +17,5 @@ button {
   max-width: inherit;
   text-overflow: ellipsis;
   white-space: pre;
-  overflow: auto;
+  overflow: hidden;
 }
