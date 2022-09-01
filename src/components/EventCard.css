@@ -1,10 +1,9 @@
 .box {
-  background-color: #4747471e;
-  color: #0d2818;
-  border-radius: 4px;
-  box-shadow: 0 2px 4px #00916e8c;
-  max-width: 121px;
-  font-size: 13px;
   padding: 5px;
+  max-width: 121px;
+  text-align: left;
+  background-color: #7f919f;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px #7f8e9e;
   white-space: nowrap;
 }

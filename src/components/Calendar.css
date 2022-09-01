@@ -1,21 +1,29 @@
 .calendar-container {
-  font-family: "Libre Baskerville";
+  font-family: fantasy;
+  font-size: 1rem;
+  position: absolute;
   width: 1050px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #e0dfd6cd;
   margin: auto;
   overflow: hidden;
-  box-shadow: 0 2px 20px rgba(0, 0, 0, 5%);
-  border: 1px solid rgba(166, 168, 179, 0.12);
+  box-shadow: 0 2px 20px rgb(0 0 0 / 5%);
   border-radius: 10px;
-  background: #efecca1e;
 }
-
 button {
-  font-family: "Libre Baskerville";
-  font-size: small;
+  font-family: inherit;
+  font-size: 0.9rem;
+  padding: inherit;
   border: none;
-  background-color: initial;
+  background-color: #7f919f36;
+  color: #e7eae5;
   max-width: inherit;
   text-overflow: ellipsis;
   white-space: pre;
   overflow: hidden;
+}
+.btn-arrows:hover {
+  background-color: #7f919f78;
 }
