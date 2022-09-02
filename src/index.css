@@ -4,7 +4,5 @@ html {
 
 body {
   font-family: "Railway, sans-serif";
-  background-image: url(../src/assets/423702.webp);
-  background-repeat: no-repeat;
-  background-size: cover;
+  background-color: #9e9e9e1f;
 }

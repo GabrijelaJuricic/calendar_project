@@ -80,7 +80,7 @@ const Grid = () => {
   // Fetching events
   useEffect(() => {
     const octokit = new Octokit({
-      auth: "Enter Personal access token here",
+      auth: "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",
     });
     octokit
       .request("GET /repos/GabrijelaJuricic/calendar_project/commits")
@@ -100,6 +100,8 @@ const Grid = () => {
     );
   }, [allFetchedEvents, currentlySelectedMonth]);
 
+  // const cellHasADateClasses = dateInCell ? "date" : "no-date-in-cell";
+
   return (
     <div className="calendar">
       {weekdays.map((weekday) => {
@@ -112,9 +114,15 @@ const Grid = () => {
       {sequence.map((cellId) => {
         return (
           <div className="cell" id={cellId} key={cellId}>
+            {/* <div className={cellHasADateClasses}> */}
             <div className="date">
-              {cellHasADate(cellId) ? dateInCell(cellId) : ""}
+              {cellHasADate(cellId) ? (
+                dateInCell(cellId)
+              ) : (
+                <div className="no-date-in-cell">{""}</div>
+              )}
             </div>
+            {/* </div> */}
             {cellHasAnEvent(cellId) && (
               <EventCard commitJson={cellHasAnEvent(cellId)} />
             )}

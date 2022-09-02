@@ -2,8 +2,13 @@
   padding: 5px;
   max-width: 121px;
   text-align: left;
-  background-color: #7f919f;
+  background-color: rgb(219 219 219);
+  box-shadow: 0 2px 4px #dbdbdb;
   border-radius: 4px;
-  box-shadow: 0 2px 4px #7f8e9e;
   white-space: nowrap;
+}
+.box:hover {
+  cursor: pointer;
+  box-shadow: 0 5px 10px rgb(150 168 185);
+  transition: 0.5s;
 }

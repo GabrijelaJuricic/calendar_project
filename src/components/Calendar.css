@@ -1,24 +1,25 @@
 .calendar-container {
-  font-family: fantasy;
+  font-family: "Railway", sans-serif;
   font-size: 1rem;
   position: absolute;
-  width: 1050px;
+  width: 900px;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background: #e0dfd6cd;
+  background: white;
   margin: auto;
   overflow: hidden;
-  box-shadow: 0 2px 20px rgb(0 0 0 / 5%);
-  border-radius: 10px;
+  box-shadow: 0 5px 10px rgb(150 168 185);
+  border-radius: 20px;
 }
 button {
   font-family: inherit;
+  width: -webkit-fill-available;
   font-size: 0.9rem;
-  padding: inherit;
+  padding: 5px;
   border: none;
-  background-color: #7f919f36;
-  color: #e7eae5;
+  background-color: rgb(219 219 219);
+  color: rgb(0 0 0 / 87%);
   max-width: inherit;
   text-overflow: ellipsis;
   white-space: pre;
